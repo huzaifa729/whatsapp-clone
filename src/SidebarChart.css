@@ -1,0 +1,23 @@
+.sidebar-chat{
+    display: flex;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.sidebar-chat:hover{
+    background-color: #ebebeb;
+}
+
+
+.sidebarchat-info > h2 {
+    font-size: 19px;
+    margin-bottom: 23px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sidebarchat-info{
+    margin-left: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
