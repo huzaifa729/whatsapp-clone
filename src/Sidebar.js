@@ -7,10 +7,12 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import SidebarChat from './SidebarChat';
 import db from './firebase';
+import { useStateValue } from './StateProvider';
 // import { Link } from 'react-router-dom';
 function Sidebar() {
 
   const [rooms, setRooms] = useState([]);
+  const [{user}, dispatch] = useStateValue();
 
   useEffect(() => {
     const unsubscribe =  db.collection('rooms').onSnapshot(snapshot => (
@@ -31,7 +33,8 @@ function Sidebar() {
     <div className='sidebar'>
 
          <div className='sidebar-header'>
-             <Avatar/>
+           
+        <Avatar src={!user.photoURL}/>
              <div className='sidebar-headerRight'>
                 <IconButton>
               <DonutLargeIcon/>

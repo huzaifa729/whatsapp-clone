@@ -6,20 +6,30 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import InsertEmoticonSharpIcon from '@mui/icons-material/InsertEmoticonSharp';
 import MicNoneSharpIcon from '@mui/icons-material/MicNoneSharp';
+import { useParams } from 'react-router';
+import db from './firebase';
 
 function Chat() {
   const [seed, setSeed] = useState('');
-
   const [input, setInput] = useState('');
+  const {roomId} = useParams();
+  const [roomName, setRoomName] = useState('');
+
+  useEffect (() => {
+     if (roomId) {
+        db.collection('rooms').doc(roomId).onSnapshot(snapshot =>(
+          setRoomName(snapshot.data().name)
+        ))
+     }
+  },[roomId])
 
   useEffect(()=>{
     setSeed(Math.floor(Math.random() * 5000));     
-}, []);
+}, [roomId]);
 
   const sendMessage = (e) => {
      e.preventDefault()
      console.log("You typed >>>", input);
-
      setInput("");
   }
 
@@ -29,7 +39,7 @@ function Chat() {
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
 
            <div className='chat-headerInfo'>
-               <h3>Room name</h3>
+               <h3>{roomName}</h3>
                <p>Last seen at ...</p>
            </div>
 
