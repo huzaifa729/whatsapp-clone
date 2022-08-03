@@ -5,6 +5,12 @@
     border-bottom: 1px solid #f6f6f6;
 }
 
+a{
+    text-transform: none !important;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .sidebar-chat:hover{
     background-color: #ebebeb;
 }

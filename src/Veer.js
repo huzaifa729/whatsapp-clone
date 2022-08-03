@@ -5,6 +5,8 @@ import "firbase/compat/auth";
 import "firebase/compat/firestore";
 import { useEffect, useState } from "react";
 import SidebarChat from "./SidebarChat";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 
 const firebaseConfig = {
@@ -70,3 +72,23 @@ export default db;
         name:roomName,
       })
     }
+
+
+
+    //Chat.js
+
+const { roomId } = useParams();
+const [roomName, setRoomName] = useState();
+
+<Link to={`/rooms/${id}`}>
+
+</Link>
+
+
+useEffect(()=>{
+    db.collection('collection').doc.onSnapshot(snapshot=>{
+      setRoomName(snapshot.data().name)
+    })
+},[roomId])
+
+
